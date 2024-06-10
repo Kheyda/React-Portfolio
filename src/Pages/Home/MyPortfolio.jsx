@@ -8,7 +8,7 @@ export default function MyPortfolio() {
           <h2 className="section--heading">My Skills</h2>
         </div>
         <div>
-          <a href="https://github.com/Kheyda/New-Portfolio-main" target="_blank" rel="noopener noreferrer" className="btn btn-github">
+          <a href="https://github.com/Kheyda/React-Portfolio" target="_blank" rel="noopener noreferrer" className="btn btn-github">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="32"
