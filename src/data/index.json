@@ -31,35 +31,35 @@
         "src": "./img/vb.jpg",
         "title": "Visual Basic",
         "description": "My experience with visual basic is its simplicity and power, especially when coupled with the robust development environment provided by Visual Studio.",
-        "link": "View More"
+        "link": ""
       },
       {
         "id": "1",
         "src": "./img/java.jpg",
         "title": "Java",
         "description": "My expertise in Java empowers me to develop robust and scalable applications, combining innovation with reliability to tackle complex challenges with confidence",
-        "link": "View More"
+        "link": ""
       },
       {
         "id": "1",
         "src": "./img/javascript.png",
         "title": "Javascript",
         "description": "From crafting dynamic web experiences to building powerful server-side applications with Node.js, JavaScript's versatility and ubiquity make it an essential tool in my developer toolkit.",
-        "link": "View More"
+        "link": ""
       },
       {
         "id": "2",
         "src": "./img/css.png",
         "title": "HTML + CSS",
         "description": "Proficient in HTML and CSS, I bring web designs to life with clean, responsive code, ensuring seamless user experiences across all platforms",
-        "link": "View More"
+        "link": ""
       },
       {
         "id": "3",
         "src": "./img/py.png",
         "title": "Python",
         "description": "With a solid foundation in Python, I've crafted elegant and efficient solutions, leveraging its versatility for everything from data analysis to web development",
-        "link": "View More"
+        "link": ""
       }
     ],
     "testimonial": [

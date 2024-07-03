@@ -636,6 +636,15 @@ input[type="checkbox"] {
     line-height: 40px;
   }
 }
+@media only screen and (max-width: 768px) {
+  .navbar__logo-name {
+    font-size: 20px; /* Further adjusted font size for smaller screens */
+    line-height: 24px; /* Further adjusted line height */
+  }
+  .navbar__logo-name img {
+    width: 40px; /* Further adjusted image size */
+  }
+}
 
 @media only screen and (max-width: 1600px) {
   .skills--section--heading {
