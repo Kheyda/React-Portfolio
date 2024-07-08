@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
+import emailjs from '@emailjs/browser';
+
 
 export default function ContactMe() {
   const [topic, setTopic] = useState('General Inquiry');
   const [showOtherInput, setShowOtherInput] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const dialogRef = useRef(null);
 
   const handleTopicChange = (e) => {
     const selectedTopic = e.target.value;
@@ -11,18 +13,7 @@ export default function ContactMe() {
     setShowOtherInput(selectedTopic === 'Other (Please specify)');
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission here
-    setIsSubmitted(true);
-    setTimeout(() => {
-      setIsSubmitted(false);
-      e.target.reset();
-    }, 1000);
-  };
-
   const validatePhoneNumber = (phoneNumber) => {
-    // Validate phone number using regular expression
     const phoneRegex = /^\d{10}$/;
     return phoneRegex.test(phoneNumber);
   };
@@ -30,26 +21,47 @@ export default function ContactMe() {
   const handlePhoneNumberChange = (e) => {
     const phoneNumber = e.target.value;
     if (!validatePhoneNumber(phoneNumber)) {
-      // Display error message or take appropriate action
     }
+  };
+
+  const form = useRef();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    emailjs
+      .sendForm('service_xsrivfh', 'template_b1rciwz', form.current, '0ZxTvsvOEIlCSCut_')
+      .then(
+        () => {
+          dialogRef.current.showModal();
+        },
+        (error) => {
+          alert('Failed to send message. Please try again.');
+        },
+      );
+
+    e.target.reset();
+  };
+
+  const closeDialog = () => {
+    dialogRef.current.close();
   };
 
   return (
     <section id="Contact" className="contact--section">
       <div className="Contact--heading">
         <h2>Contact Me</h2>
-        </div>
-        <p className="text-lg">
-          Reach out to me through the contact form on my portfolio website to start a conversation and explore collaboration opportunities.
-        </p>
-      <form className="contact--form--container" onSubmit={handleSubmit}>
+      </div>
+      <p className="text-lg">
+        Reach out to me through the contact form on my portfolio website to start a conversation and explore collaboration opportunities.
+      </p>
+      <form className="contact--form--container" ref={form} onSubmit={handleSubmit}>
         <div className="container">
           <label htmlFor="first-name" className="contact--label">
             <span className="text-md">First Name</span>
             <input
               type="text"
               className="contact--input text-md"
-              name="first-name"
+              name="first_name"
               id="first-name"
               pattern="[A-Za-z]+"
               title="Please enter only alphabets"
@@ -61,7 +73,7 @@ export default function ContactMe() {
             <input
               type="text"
               className="contact--input text-md"
-              name="last-name"
+              name="last_name"
               id="last-name"
               pattern="[A-Za-z]+"
               title="Please enter only alphabets"
@@ -83,7 +95,7 @@ export default function ContactMe() {
             <input
               type="tel"
               className="contact--input text-md"
-              name="phone-number"
+              name="phone_number"
               id="phone-number"
               pattern="[0-9]{10}"
               title="Please enter exactly 10 digits"
@@ -97,6 +109,7 @@ export default function ContactMe() {
           <select
             id="choose-topic"
             className="contact--input text-md"
+            name="topic"
             value={topic}
             onChange={handleTopicChange}
             required
@@ -117,7 +130,7 @@ export default function ContactMe() {
             <input
               type="text"
               className="contact--input text-md"
-              name="other-topic"
+              name="other_topic"
               id="other-topic"
               required
             />
@@ -127,6 +140,7 @@ export default function ContactMe() {
           <span className="text-md">Message</span>
           <textarea
             className="contact--input text-md"
+            name="message"
             id="message"
             rows="8"
             placeholder="Type your message..."
@@ -141,11 +155,11 @@ export default function ContactMe() {
           <button className="btn btn-primary contact--form--btn" type="submit">Submit</button>
         </div>
       </form>
-      {isSubmitted && (
-        <div className="popup-message">
-          <p>Message successfully sent!</p>
-        </div>
-      )}
+
+      <dialog ref={dialogRef} className="dialog">
+        <p>Message successfully sent!</p>
+        <button className="dialog--button" onClick={closeDialog}>OK</button>
+      </dialog>
     </section>
   );
 }

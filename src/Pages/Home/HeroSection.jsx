@@ -22,7 +22,7 @@ export default function HeroSection() {
         {/* Use flexbox to place buttons next to each other */}
         <div className="hero--section--buttons flex-container">
       
-          <a href="./CV/KVC.pdf" download className="btn btn-primary">
+          <a href="./CV/Khanya Somagaca Resume.pdf" download className="btn btn-primary">
             Download CV
           </a>
         </div>
