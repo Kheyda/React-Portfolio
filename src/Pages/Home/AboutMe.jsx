@@ -5,7 +5,7 @@ export default function AboutMe() {
         <img src="./img/Khanya Somagaca.jpg" alt="About Me" />
       </div>
       <div className="about--section--content">
-        <h1 className="about--section--heading">About Me</h1>
+        <h1 className="about--section--heading">About Me </h1>
         <div className="about--section--info">
           <p><strong>Name:</strong> Khanya Somagaca</p>
           <p><strong>Birthday:</strong> 28 Dec</p>
